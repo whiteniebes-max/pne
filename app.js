@@ -13,28 +13,22 @@ let userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 async function load() {
   data = await fetch("curricula.json").then(r => r.json());
 
-  // cargar plan guardado (si existe)
   userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 
-  // si no hay uno guardado → crear
   if (!userPlan) {
     userPlan = initializeUserPlan();
     preloadCompleted();
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   } else {
-    // ✅ Si existe Semestre 0, eliminar
     if (userPlan["Semestre 0 — ✅ Cursadas"]) delete userPlan["Semestre 0 — ✅ Cursadas"];
     if (userPlan["Semestre 0"]) delete userPlan["Semestre 0"];
 
-    // asegurar estructura mínima
     const base = initializeUserPlan();
     for (let s in base) if (!userPlan[s]) userPlan[s] = base[s];
-
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   }
 
   document.getElementById("viewMode").onchange = render;
-
   const cf = document.getElementById("catalogFilter");
   if (cf) cf.onchange = render;
 
@@ -58,25 +52,14 @@ function initializeUserPlan() {
   };
 }
 
-/* Solo marca cursadas, NO las pone en Semestre */
 function preloadCompleted() {
   let cursadas = [
-    // BioIng
-    "026745", "027413",
-
-    // CD S1
-    "001449", "032683", "033518", "033698", "033514",
-
-    // CD S2
-    "015962", "001299", "001290", "033699", "033515",
-
-    // CD S3
-    "001432", "030890", "004196", "033700", "033704",
-
-    // CD — Constitución
+    "026745","027413",
+    "001449","032683","033518","033698","033514",
+    "015962","001299","001290","033699","033515",
+    "001432","030890","004196","033700","033704",
     "001505"
   ];
-
   cursadas.forEach(code => completed.add(code));
   localStorage.setItem("completedCourses", JSON.stringify([...completed]));
 }
@@ -94,49 +77,37 @@ function render() {
   const cFilters = document.getElementById("catalog-filters");
   const cCourses = document.getElementById("catalog-courses");
 
-  // Limpiar contenido
   app.innerHTML = "";
   if (cCourses) cCourses.innerHTML = "";
 
-  // 🔹 Estado por defecto
   if (cat) cat.style.display = "none";
   if (cFilters) cFilters.style.display = "none";
   if (miPlan) miPlan.style.display = "none";
   app.style.display = "grid";
 
-  // ======================================
   // 🌸 MODO MI PLAN
-  // ======================================
   if (mode === "miplan") {
-    // Mostrar catálogo y área de plan
     if (miPlan) miPlan.style.display = "flex";
     if (cat) cat.style.display = "flex";
     if (cFilters) cFilters.style.display = "block";
 
-    app.style.display = "grid"; // dejamos visible el mismo #app
-
     renderCatalog();
-    displaySemesters(userPlan, true); // ✅ usa el mismo contenedor #app
+    displaySemesters(userPlan, true);
 
     const btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
-    btn.onclick = () => addSemester();
+    btn.onclick = addSemester;
     app.appendChild(btn);
-
     return;
   }
 
-  // ======================================
   // 💡 MODO BIOINGENIERÍA
-  // ======================================
   if (mode === "bioingenieria" && data.bioingenieria) {
     displaySemesters(data.bioingenieria, false);
     return;
   }
 
-  // ======================================
   // 💡 MODO CIENCIA DE DATOS
-  // ======================================
   if (mode === "cienciadatos" && data.cienciadatos) {
     displaySemesters(data.cienciadatos, false);
     return;
@@ -194,7 +165,18 @@ function displaySemesters(obj, editable) {
     box.ondragover = e => dragOver(e);
     box.ondrop = e => drop(e);
 
-    box.innerHTML = `<h2>${sem}</h2>`;
+    // 🗑️ botón para eliminar semestre (solo en Mi Plan)
+    let title = document.createElement("h2");
+    title.textContent = sem;
+    if (editable) {
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "🗑️";
+      delBtn.style.marginLeft = "8px";
+      delBtn.style.cursor = "pointer";
+      delBtn.onclick = () => removeSemester(sem);
+      title.appendChild(delBtn);
+    }
+    box.appendChild(title);
 
     obj[sem].forEach(course => {
       const el = renderCourse(course, sem, editable);
@@ -215,14 +197,46 @@ function renderCourse(c, sem, editable) {
 
   el.textContent = `${c.code} — ${c.name}`;
 
+  // 🗑️ botón de eliminar asignatura
   if (editable) {
     el.draggable = true;
     el.ondragstart = e => dragStart(e, c.code, sem);
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "✖";
+    delBtn.style.float = "right";
+    delBtn.style.background = "transparent";
+    delBtn.style.border = "none";
+    delBtn.style.cursor = "pointer";
+    delBtn.style.color = "#a53b68";
+    delBtn.onclick = e => {
+      e.stopPropagation();
+      removeCourse(c.code, sem);
+    };
+    el.appendChild(delBtn);
   }
 
   el.onclick = () => toggleCompleted(c.code);
 
   return el;
+}
+
+// =====================================================
+//              ELIMINAR SEMESTRE / ASIGNATURA
+// =====================================================
+
+function removeSemester(sem) {
+  if (!confirm(`¿Eliminar ${sem}?`)) return;
+  delete userPlan[sem];
+  localStorage.setItem("userPlan", JSON.stringify(userPlan));
+  render();
+}
+
+function removeCourse(code, sem) {
+  if (!sem || !userPlan[sem]) return;
+  userPlan[sem] = userPlan[sem].filter(c => c.code !== code);
+  localStorage.setItem("userPlan", JSON.stringify(userPlan));
+  render();
 }
 
 // =====================================================
@@ -250,16 +264,13 @@ function drop(e) {
 
 function moveCourse(code, fromSem, toSem) {
   if (!userPlan[toSem]) return;
-
   const c = findCourse(code);
   if (!c) return;
 
   if (fromSem && userPlan[fromSem]) {
     userPlan[fromSem] = userPlan[fromSem].filter(x => x.code !== code);
   }
-
   userPlan[toSem].push(c);
-
   localStorage.setItem("userPlan", JSON.stringify(userPlan));
   render();
 }
@@ -276,7 +287,6 @@ function canTake(course) {
 function toggleCompleted(code) {
   if (completed.has(code)) completed.delete(code);
   else completed.add(code);
-
   localStorage.setItem("completedCourses", JSON.stringify([...completed]));
   render();
 }
