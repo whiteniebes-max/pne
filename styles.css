@@ -208,3 +208,115 @@ h1 {
   border: 2px dashed #e76f93 !important;
   background: #ffe6ef !important;
 }
+
+/* === Diseño del modo "Mi Plan" === */
+#mi-plan {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+/* Catálogo a la izquierda */
+#catalog {
+  width: 340px;
+  min-width: 320px;
+  flex-shrink: 0;
+  background-color: #ffe5ef;
+  border: 2px solid #f5a3c2;
+  border-radius: 15px;
+  padding: 1rem;
+  height: calc(90vh - 80px);
+  overflow-y: auto;
+  box-shadow: 2px 2px 10px rgba(255, 183, 204, 0.4);
+}
+
+/* Zona de los semestres a la derecha */
+#app {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-content: start;
+  justify-items: start;
+  background-color: #fde8f1;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: inset 0 0 6px rgba(255, 190, 210, 0.3);
+  min-height: 85vh;
+}
+
+/* Tarjetas de semestres */
+.semester {
+  background-color: #fff0f6;
+  border: 2px solid #f5a3c2;
+  border-radius: 15px;
+  padding: 1rem;
+  min-height: 200px;
+  box-shadow: 0 2px 5px rgba(200, 100, 150, 0.1);
+  transition: transform 0.2s;
+}
+
+.semester:hover {
+  transform: translateY(-3px);
+}
+
+.semester h2 {
+  font-size: 1.1rem;
+  color: #a53b68;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Cursos dentro de cada semestre */
+.course {
+  background-color: #f7bfd8;
+  color: #5a1c3d;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.course:hover {
+  background-color: #f194b5;
+  transform: scale(1.02);
+}
+
+/* Botón de eliminar asignatura */
+.course button {
+  float: right;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.course button:hover {
+  opacity: 1;
+  color: #e76f93;
+}
+
+/* Botón de eliminar semestre */
+.semester h2 button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #a53b68;
+}
+.semester h2 button:hover {
+  color: #e76f93;
+  transform: scale(1.2);
+}
+
+/* Scroll suave */
+#catalog::-webkit-scrollbar {
+  width: 8px;
+}
+#catalog::-webkit-scrollbar-thumb {
+  background-color: #f2a6c2;
+  border-radius: 10px;
+}
