@@ -100,22 +100,31 @@ function render() {
   const mode = document.getElementById("viewMode").value;
 
   const app = document.getElementById("app");
+  const miPlan = document.getElementById("mi-plan");      // <-- NUEVO
   const cat = document.getElementById("catalog");
   const cFilters = document.getElementById("catalog-filters");
   const cCourses = document.getElementById("catalog-courses");
 
-  // limpiar contenido anterior
+  // Limpiar contenedores de cursos
   app.innerHTML = "";
   cCourses.innerHTML = "";
 
-  // 🔹 Ocultar catálogo por defecto
+  // 🔹 Estado por defecto (cuando NO es "Mi Plan")
+  //    - Ocultamos todo el contenedor de Mi Plan (incluye el catálogo)
+  //    - Mostramos la malla normal
+  if (miPlan) miPlan.style.display = "none";
+  app.style.display = "grid";
   cat.classList.remove("visible");
   cFilters.style.display = "none";
 
-  // =====================================================
-  // ✅ MODO MI PLAN
-  // =====================================================
+  // ======================================
+  // 🩷 MODO "MI PLAN"
+  // ======================================
   if (mode === "miplan") {
+    // Mostrar Mi Plan (incluye catálogo) y ocultar la malla normal
+    if (miPlan) miPlan.style.display = "flex";
+    app.style.display = "none";
+
     cat.classList.add("visible");
     cFilters.style.display = "block";
 
@@ -125,23 +134,25 @@ function render() {
     const btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
-    app.appendChild(btn);
-
+    // El botón va en el mismo contenedor donde pintas los semestres (app),
+    // pero en modo Mi Plan app está oculto. Si prefieres que se vea,
+    // cámbialo a otro contenedor dentro de #mi-plan.
+    document.getElementById("app").appendChild(btn);
     return;
   }
 
-  // =====================================================
+  // ======================================
   // 💡 MODO BIOINGENIERÍA
-  // =====================================================
-  if (mode === "bioingenieria" && data.bioingenieria) {
+  // ======================================
+  if (mode === "bioingenieria") {
     displaySemesters(data.bioingenieria, false);
     return;
   }
 
-  // =====================================================
+  // ======================================
   // 💡 MODO CIENCIA DE DATOS
-  // =====================================================
-  if (mode === "cienciadatos" && data.cienciadatos) {
+  // ======================================
+  if (mode === "cienciadatos") {
     displaySemesters(data.cienciadatos, false);
     return;
   }
