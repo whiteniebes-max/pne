@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular Rosita — Planner Interactivo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🌸 Malla Curricular Rosita — Planner Interactivo 🌸</h1>
+
+  <!-- Selector de vista -->
+  <select id="viewMode">
+    <option value="bioingenieria">Bioingeniería</option>
+    <option value="cienciadatos">Ciencia de Datos</option>
+    <option value="miplan">Mi Plan</option>
+  </select>
+
+  <!-- Malla estándar -->
+  <div id="app"></div>
+
+  <!-- Plan personalizado -->
+  <div id="mi-plan" style="display: none;">
+    <!-- Catálogo -->
+    <div id="catalog">
+      <h2>Catálogo de Asignaturas</h2>
+      <div id="catalog-filters">
+        <select id="catalogFilter">
+          <option value="all">Todas</option>
+          <option value="available">Disponibles</option>
+          <option value="completed">Cursadas</option>
+          <option value="locked">Bloqueadas</option>
+        </select>
+        <input
+          type="text"
+          id="catalogSearch"
+          placeholder="🔍 Buscar asignatura..."
+        />
+      </div>
+      <div id="catalog-courses"></div>
+    </div>
+
+    <!-- Semestres de mi plan -->
+    <div id="app-plan" class="plan-semesters"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
