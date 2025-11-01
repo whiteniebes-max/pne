@@ -1,49 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malla Curricular Rosita — Planner Interactivo</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Malla Curricular Rosita — Planner</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <h1>🌸 Malla Curricular Rosita — Planner Interactivo 🌸</h1>
+  <h1>🌸 Malla Curricular Rosita — Planner 🌸</h1>
 
-  <!-- Selector de vista -->
-  <select id="viewMode">
-    <option value="bioingenieria">Bioingeniería</option>
-    <option value="cienciadatos">Ciencia de Datos</option>
-    <option value="miplan">Mi Plan</option>
-  </select>
+  <div id="controls">
+    <select id="viewMode">
+      <option value="bioingenieria">Bioingeniería</option>
+      <option value="cienciadatos">Ciencia de Datos</option>
+      <option value="miplan">Mi plan ✨</option>
+    </select>
+  </div>
 
-  <!-- Malla estándar -->
-  <div id="app"></div>
+  <div id="layout">
 
-  <!-- Plan personalizado -->
-  <div id="mi-plan" style="display: none;">
-    <!-- Catálogo -->
+    <!-- ✅ CATÁLOGO SOLO PARA MI PLAN -->
     <div id="catalog">
-      <h2>Catálogo de Asignaturas</h2>
-      <div id="catalog-filters">
+      <div id="catalog-filters" style="display:none">
+        <h2>Catálogo</h2>
         <select id="catalogFilter">
           <option value="all">Todas</option>
           <option value="available">Disponibles</option>
           <option value="completed">Cursadas</option>
           <option value="locked">Bloqueadas</option>
         </select>
-        <input
-          type="text"
-          id="catalogSearch"
-          placeholder="🔍 Buscar asignatura..."
-        />
       </div>
+
+      <!-- ✅ Aquí se cargan cursos -->
       <div id="catalog-courses"></div>
     </div>
 
-    <!-- Semestres de mi plan -->
-    <div id="app-plan" class="plan-semesters"></div>
+    <!-- ✅ Semestres -->
+    <div id="app"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="curricula.js"></script>
+  <script src="app.js"></script>
+
 </body>
 </html>
