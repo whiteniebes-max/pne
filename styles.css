@@ -1,0 +1,219 @@
+/* =====================================================
+   🌸 Malla Curricular Rosita — Estilos Globales
+===================================================== */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fdeef4;
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  padding: 20px;
+  margin: 0;
+  color: #a52a6c;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =====================================================
+   SELECTOR DE VISTA
+===================================================== */
+#viewMode {
+  margin-left: 20px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid #f3a8c2;
+  background: white;
+  font-size: 1rem;
+  color: #a53b68;
+  outline: none;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+#viewMode:hover {
+  border-color: #e76f93;
+}
+
+/* =====================================================
+   GRID PRINCIPAL — Bioingeniería / Ciencia de Datos
+===================================================== */
+#app {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   TARJETA DE SEMESTRE
+===================================================== */
+.semester {
+  background: #ffffffdd;
+  border: 2px solid #f3a8c2;
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 4px #f4b6cc;
+}
+
+.semester h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: 700;
+  color: #a53b68;
+}
+
+/* =====================================================
+   CURSOS
+===================================================== */
+.course {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px dashed #d27da1;
+  background: #f7c6d9cc;
+  cursor: grab;
+  font-size: 0.95rem;
+  transition: 0.15s ease-in-out;
+}
+
+.course.completed {
+  background: #f09bb8;
+  border-color: #e76f93;
+}
+
+.course.available {
+  background: #f7b8ce;
+  border-color: #d27da1;
+}
+
+.course.locked {
+  background: #fff;
+  border-color: #d8bfd0;
+  opacity: 0.55;
+}
+
+.course:hover {
+  transform: scale(1.03);
+}
+
+/* =====================================================
+   SECCIÓN "MI PLAN"
+===================================================== */
+#mi-plan {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Catálogo */
+#catalog {
+  display: none;
+  flex-direction: column;
+  width: 30%;
+  min-width: 260px;
+  max-width: 350px;
+  background: #ffffffdd;
+  border: 2px solid #f3a8c2;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 4px #f4b6cc;
+  overflow-y: auto;
+  height: calc(100vh - 160px);
+}
+
+#catalog.visible {
+  display: flex;
+}
+
+#catalog h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a53b68;
+}
+
+#catalog-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#catalogFilter,
+#catalogSearch {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid #f3a8c2;
+  background: white;
+  font-size: 0.9rem;
+}
+
+#catalogSearch {
+  background-image: linear-gradient(to right, #fff, #ffe7ef);
+}
+
+#catalog-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Scroll bonito */
+#catalog::-webkit-scrollbar {
+  width: 8px;
+}
+#catalog::-webkit-scrollbar-thumb {
+  background: #f3a8c2;
+  border-radius: 4px;
+}
+
+/* Semestres personalizados */
+#app-plan {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Drag & Drop */
+.dragover {
+  border: 2px dashed #e76f93 !important;
+  background: #ffe6ef !important;
+}
+
+/* Botón Agregar */
+button {
+  background: #f7b8ce;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  color: #6b2e4e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #e76f93;
+  color: white;
+}
