@@ -1,0 +1,147 @@
+{
+  "bioingenieria": {
+    "Semestre I": [
+      { "code": "001295", "name": "Cálculo diferencial", "prereq": [] },
+      { "code": "001290", "name": "Álgebra lineal", "prereq": [] },
+      { "code": "026826", "name": "Biología celular", "prereq": [] },
+      { "code": "026745", "name": "Química general", "prereq": [] },
+      { "code": "033698", "name": "Introducción a la programación", "prereq": [] },
+      { "code": "033763", "name": "Introducción a la ingeniería", "prereq": [] }
+    ],
+
+    "Semestre II": [
+      { "code": "001297", "name": "Cálculo integral", "prereq": ["001295"] },
+      { "code": "001340", "name": "Física mecánica", "prereq": [] },
+      { "code": "033699", "name": "Programación avanzada", "prereq": ["033698"] },
+      { "code": "027413", "name": "Bioquímica básica", "prereq": ["026745"] },
+      { "code": "033733", "name": "Proyecto de diseño en ingeniería (CDIO año 1)", "prereq": ["033763"] },
+      { "code": "ELECT_I", "name": "Electiva I", "prereq": [] }
+    ],
+
+    "Semestre III": [
+      { "code": "001299", "name": "Cálculo vectorial", "prereq": ["001297", "001290"] },
+      { "code": "001300", "name": "Ecuaciones diferenciales", "prereq": ["001290", "001297"] },
+      { "code": "001341", "name": "Fluidos y termodinámica", "prereq": ["001297", "001340"] },
+      { "code": "001261", "name": "Biología molecular", "prereq": ["026826", "027413"] },
+      { "code": "002544", "name": "Significación teológica", "prereq": ["033733"] },
+      { "code": "023710", "name": "Electricidad, magnetismo y materiales", "prereq": ["001297", "001340"] }
+    ],
+
+    "Semestre IV": [
+      { "code": "033732", "name": "Probabilidad y estadística", "prereq": ["001297"] },
+      { "code": "004153", "name": "Señales y sistemas", "prereq": ["001297", "001290"] },
+      { "code": "030894", "name": "Fundamentos de circuitos eléctricos", "prereq": ["033763", "023710"] },
+      { "code": "035672", "name": "Fisiología de sistemas", "prereq": ["026826"] },
+      { "code": "035759", "name": "Bioinformática", "prereq": ["001261", "033699"] },
+      { "code": "ELECT_II", "name": "Electiva II", "prereq": [] }
+    ],
+
+    "Semestre V": [
+      { "code": "033758", "name": "Biomecánica", "prereq": ["001299", "001341"] },
+      { "code": "031681", "name": "Electrónica analógica y aplicaciones", "prereq": ["030894"] },
+      { "code": "037296", "name": "Materiales bioingeniería", "prereq": ["027413", "035672"] },
+      { "code": "035685", "name": "Proyecto de diseño en bioingeniería", "prereq": ["033733", "001261", "030894"] },
+      { "code": "002356", "name": "Epistemología de la ingeniería", "prereq": [] }
+    ],
+
+    "Semestre VI": [
+      { "code": "031584", "name": "Análisis de sistemas dinámicos", "prereq": ["001300", "001341"] },
+      { "code": "035265", "name": "Instrumentación biomédica", "prereq": ["031681", "004153"] },
+      { "code": "032842", "name": "Ética, tecnología e ingeniería", "prereq": ["035685"] },
+      { "code": "COMP_I", "name": "Complementaria I", "prereq": [] },
+      { "code": "ENF_I", "name": "Énfasis I", "prereq": [] },
+      { "code": "033801", "name": "Principios de biotecnología", "prereq": ["027413"] }
+    ],
+
+    "Semestre VII": [
+      { "code": "035983", "name": "Bioprocesos", "prereq": ["033801"] },
+      { "code": "034740", "name": "Imágenes médicas", "prereq": ["033699", "001299"] },
+      { "code": "033992", "name": "Seminario de trabajo de grado", "prereq": ["035685", "035759", "033758", "031681"] },
+      { "code": "002476", "name": "Fe y compromiso del ingeniero", "prereq": [] },
+      { "code": "COMP_II", "name": "Complementaria II", "prereq": [] },
+      { "code": "ENF_II", "name": "Énfasis II", "prereq": [] },
+      { "code": "ELECT_III", "name": "Electiva III", "prereq": [] }
+    ],
+
+    "Semestre VIII": [
+      { "code": "034738", "name": "Trabajo de grado", "prereq": ["033992"] },
+      { "code": "017643", "name": "Derecho, constitución y responsabilidad médica", "prereq": [] },
+      { "code": "004175", "name": "Proyecto social universitario", "prereq": ["035685"] },
+      { "code": "COMP_III", "name": "Complementaria III", "prereq": [] },
+      { "code": "ENF_III", "name": "Énfasis III", "prereq": [] }
+    ]
+  },
+
+  "cienciadatos": {
+    "Semestre I": [
+      { "code": "001449", "name": "Principios de Economía", "prereq": [] },
+      { "code": "032683", "name": "Matemáticas I", "prereq": [] },
+      { "code": "033518", "name": "Lógica y Matemáticas Discretas", "prereq": [] },
+      { "code": "033698", "name": "Introducción a la Programación", "prereq": [] },
+      { "code": "033514", "name": "Introducción a la Ciencia de Datos", "prereq": [] },
+      { "code": "ELECT_1", "name": "Electiva 1", "prereq": [] }
+    ],
+
+    "Semestre II": [
+      { "code": "015962", "name": "Microeconomía", "prereq": ["001449", "032683"] },
+      { "code": "001299", "name": "Cálculo Vectorial", "prereq": ["032683"] },
+      { "code": "001290", "name": "Álgebra Lineal", "prereq": [] },
+      { "code": "033699", "name": "Programación Avanzada", "prereq": ["033698"] },
+      { "code": "033515", "name": "Curaduría y Gobernanza de Datos", "prereq": ["033514"] },
+      { "code": "ELECT_2", "name": "Electiva 2", "prereq": [] }
+    ],
+
+    "Semestre III": [
+      { "code": "001432", "name": "Macroeconomía", "prereq": ["015962"] },
+      { "code": "030890", "name": "Teoría de Probabilidad", "prereq": ["001299"] },
+      { "code": "004196", "name": "Estructuras de Datos", "prereq": ["033518", "033699"] },
+      { "code": "033700", "name": "Bases de Datos", "prereq": ["033518", "033699"] },
+      { "code": "033704", "name": "Visualización de Datos", "prereq": ["033514", "033698"] }
+    ],
+
+    "Semestre IV": [
+      { "code": "033519", "name": "Inferencia Estadística", "prereq": ["030890"] },
+      { "code": "ELECT_3", "name": "Electiva 3", "prereq": [] },
+      { "code": "033701", "name": "Principios de Desarrollo de Software", "prereq": ["033700"] },
+      { "code": "004084", "name": "Introducción a la Inteligencia Artificial", "prereq": ["004196"] },
+      { "code": "001505", "name": "Constitución Política", "prereq": [] },
+      { "code": "ELECT_4", "name": "Electiva 4", "prereq": [] }
+    ],
+
+    "Semestre V": [
+      { "code": "001377", "name": "Administración", "prereq": [] },
+      { "code": "033520", "name": "Análisis de Regresión", "prereq": ["033519"] },
+      { "code": "033762", "name": "Gestión de Proyectos", "prereq": ["001432"] },
+      { "code": "033702", "name": "Procesamiento de Datos a Gran Escala", "prereq": ["033700"] },
+      { "code": "033773", "name": "Fundamentos de Aprendizaje de Máquina", "prereq": ["004084", "033519"] },
+      { "code": "TEO_1", "name": "Teología 1", "prereq": [] }
+    ],
+
+    "Semestre VI": [
+      { "code": "001382", "name": "Organizaciones", "prereq": ["001377"] },
+      { "code": "034912", "name": "Legislación de Datos", "prereq": [] },
+      { "code": "033521", "name": "Análisis Multivariado", "prereq": ["033519"] },
+      { "code": "033703", "name": "Técnicas de Aprendizaje de Máquina", "prereq": ["004084", "033519"] },
+      { "code": "033573", "name": "Introducción a la Narrativa de Datos", "prereq": ["033704"] },
+      { "code": "TEO_2", "name": "Teología 2", "prereq": [] }
+    ],
+
+    "Semestre VII": [
+      { "code": "033523", "name": "Seminario de Trabajo de Grado", "prereq": ["033521", "033703"] },
+      { "code": "033305", "name": "Temas de Optimización / Lineal", "prereq": ["001290", "033699"] },
+      { "code": "033746", "name": "Optimización Lineal", "prereq": ["001290", "032683", "033698"] },
+      { "code": "COMP_7A", "name": "Complementaria", "prereq": [] },
+      { "code": "COMP_7B", "name": "Complementaria", "prereq": [] },
+      { "code": "ENF_1", "name": "Énfasis 1", "prereq": [] },
+      { "code": "FIL_1", "name": "Filosofía 1", "prereq": [] }
+    ],
+
+    "Semestre VIII": [
+      { "code": "033522", "name": "Trabajo de Grado", "prereq": ["033523", "034912"] },
+      { "code": "COMP_8", "name": "Complementaria", "prereq": [] },
+      { "code": "ENF_2", "name": "Énfasis 2", "prereq": [] },
+      { "code": "ENF_3", "name": "Énfasis 3", "prereq": [] },
+      { "code": "FIL_2", "name": "Filosofía 2", "prereq": [] }
+    ]
+  }
+}
