@@ -1,5 +1,5 @@
 /* =====================================================
-   🌸 Malla Curricular Rosita — Estilos Globales
+   ✨ Malla Curricular Rosita — Estilos Globales
 ===================================================== */
 
 body {
@@ -22,30 +22,26 @@ h1 {
   align-items: center;
 }
 
+
 /* =====================================================
-   SELECTOR DE VISTA
+   SELECTOR
 ===================================================== */
 #viewMode {
   margin-left: 20px;
   margin-top: 8px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 2px solid #f3a8c2;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #f3a8c2;
   background: white;
-  font-size: 1rem;
-  color: #a53b68;
+  font-size: 0.95rem;
   outline: none;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
 }
 
-#viewMode:hover {
-  border-color: #e76f93;
-}
 
 /* =====================================================
-   GRID PRINCIPAL — Bioingeniería / Ciencia de Datos
+   GRID PRINCIPAL
 ===================================================== */
+
 #app {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -55,18 +51,22 @@ h1 {
   box-sizing: border-box;
 }
 
+
 /* =====================================================
    TARJETA DE SEMESTRE
 ===================================================== */
+
 .semester {
   background: #ffffffdd;
   border: 2px solid #f3a8c2;
   border-radius: 14px;
   padding: 16px;
   min-height: 120px;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   box-shadow: 0 2px 4px #f4b6cc;
 }
 
@@ -78,9 +78,11 @@ h1 {
   color: #a53b68;
 }
 
+
 /* =====================================================
    CURSOS
 ===================================================== */
+
 .course {
   padding: 12px 14px;
   border-radius: 10px;
@@ -91,29 +93,35 @@ h1 {
   transition: 0.15s ease-in-out;
 }
 
+/* ✅ Cursadas */
 .course.completed {
   background: #f09bb8;
   border-color: #e76f93;
 }
 
+/* ✅ Disponibles */
 .course.available {
   background: #f7b8ce;
   border-color: #d27da1;
 }
 
+/* ❌ No desbloqueadas */
 .course.locked {
   background: #fff;
   border-color: #d8bfd0;
   opacity: 0.55;
 }
 
+/* Hover */
 .course:hover {
   transform: scale(1.03);
 }
 
+
 /* =====================================================
-   SECCIÓN "MI PLAN"
+   SECCIÓN "MI PLAN" — Layout con Catálogo a la Izquierda
 ===================================================== */
+
 #mi-plan {
   display: flex;
   flex-direction: row;
@@ -123,9 +131,9 @@ h1 {
   box-sizing: border-box;
 }
 
-/* Catálogo */
+/* Columna izquierda — Catálogo */
 #catalog {
-  display: none;
+  display: flex;
   flex-direction: column;
   width: 30%;
   min-width: 260px;
@@ -150,26 +158,23 @@ h1 {
   color: #a53b68;
 }
 
+/* Filtros dentro del catálogo */
 #catalog-filters {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
-#catalogFilter,
-#catalogSearch {
-  padding: 8px 10px;
+#catalogFilter {
+  padding: 6px 10px;
   border-radius: 8px;
   border: 1.5px solid #f3a8c2;
   background: white;
-  font-size: 0.9rem;
+  width: 100%;
 }
 
-#catalogSearch {
-  background-image: linear-gradient(to right, #fff, #ffe7ef);
-}
-
+/* Cursos del catálogo */
 #catalog-courses {
   display: flex;
   flex-direction: column;
@@ -180,40 +185,26 @@ h1 {
 #catalog::-webkit-scrollbar {
   width: 8px;
 }
+
 #catalog::-webkit-scrollbar-thumb {
   background: #f3a8c2;
   border-radius: 4px;
 }
 
-/* Semestres personalizados */
-#app-plan {
+/* Columna derecha — Semestres del plan */
+#mi-plan-semesters {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* Drag & Drop */
+
+/* =====================================================
+   DRAG & DROP
+===================================================== */
+
 .dragover {
   border: 2px dashed #e76f93 !important;
   background: #ffe6ef !important;
-}
-
-/* Botón Agregar */
-button {
-  background: #f7b8ce;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 1rem;
-  color: #6b2e4e;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #e76f93;
-  color: white;
 }
